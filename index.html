@@ -33,6 +33,33 @@ main,section,footer{display:flex;flex-direction:column;flex-wrap:nowrap;justify-
       </div>
     </main>
     <footer><p class="inner-100"><small>© 2021 Rocketpage</small></p></footer>
-	<script>if ("serviceWorker" in navigator) {navigator.serviceWorker.register("sw.js", {updateViaCache: "none",});}</script>
+			<script> 
+				if ("serviceWorker" in navigator) {navigator.serviceWorker.register("sw.js", {updateViaCache: "none",});}
+
+				let deferredPrompt;
+				window.addEventListener('beforeinstallprompt', function (e) {
+						console.log('beforeinstallprompt запущен');
+						e.preventDefault();
+						deferredPrompt = e;
+						modal.style.display = 'block';
+				});
+				// Получаем модальное окно
+				var modal = document.getElementById('myModal');
+				// Получаем элемент <span> закрывающее модальное окно
+				var span = document.getElementsByClassName('close')[0];
+				// Если пользователь щелкает за пределами модального окна - оно закрывается
+				window.onclick = function(event) {
+						if (event.target == modal) {
+								modal.style.display = 'none';
+						}
+				}
+				// Если пользователь щелкает <span> (x), модальное окно закрывается
+				span.onclick = function() {
+						modal.style.display = 'none';
+				}
+				function offlinePrompt() {
+						deferredPrompt.prompt();
+				}
+	</script>
   </body>
 </html>
