@@ -2,13 +2,7 @@ this.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open('v1').then(function(cache) {
             return cache.addAll([
-								'/',
-								'index.html',
-								'prices.html',
-								'infotext.html',
-								'tabs.html',
-								'cardsgrid.html',
-								'contacts.html',							
+								'/',							
 								'img/menu-open-icon-24px.svg',
 								'img/menu-close-icon-24px.svg',
 								'img/list-icon-24px.svg',
