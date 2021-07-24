@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->    
+        <title>Mobikdev PWA</title>
+				<style>* {box-sizing: border-box;}  html,body { height: 100%; font-family: sans-serif; margin: 0; font-size: 100%; color: #222; }   h1,h2,h3,h4{line-height:1;margin:0;align-self:stretch;width:100%;} h1 {font-size:3.2em;}h2{font-size: 2em;letter-spacing:.02em;}h3 {font-size:1.8em;}h4{font-size: 1.4em;} p{font-size: 1.2em;line-height: 1.8;margin: 0 0 16px;} blockquote{font-size: 1.3em;line-height: 1.8;font-family: serif;font-style:italic;color:#222;} span{margin: 0 0 16px;font-size: 3.2em;font-weight: 700;display: block;} .hero h1{font-size:4em;font-weight: 700;text-transform: uppercase;} .hero h1,.hero h2,.hero p,.hero span{line-height: 1.6;color: #FFF;} .hero a.btn {margin-top: 32px;}a{cursor:pointer;}  header { background:#FFF; max-height:56px; box-shadow: 0 16px 32px -16px rgba(0, 0, 0, 0.24); position: fixed; z-index:1000; width: 100%; }  /* Navigation */  .header-row { display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: stretch; padding: 16px 16px; max-width: 1280px; margin: 0 auto; }  nav a { color: #222; padding: 16px 0; margin-left: 24px; font-size: .8em; font-weight: 600; text-transform: uppercase; text-align: center; text-decoration: none; background-image: linear-gradient(90deg, #039 0%, #039 100%); background-position: 0% 100%; background-repeat: no-repeat; background-size: 0% 2px; transition: background-size .3s; }  #selected { color: #039; background-size: 100% 2px; background-image: linear-gradient(90deg, #039 0%, #039 100%); }  .menu-open,.menu-close, #menu-toggle { display: none; width: 0px; }  hr {width: 100%;margin: 24px 0; border:none; color: #DDD; background-color:#DDD; height:1px;} ul {font-size: 1.2em;line-height: 1.6;margin: 0; margin-inline-start: 32px;list-style: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 17l2 2 4-4m3 2a6 6 0 11-12 0 6 6 0 0112 0z' stroke='%23039' stroke-width='2'/%3E%3C/svg%3E") outside;padding: 0;} li{margin-bottom:8px;}  main,section,footer { display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: space-around; align-content: center; align-items: center; padding: 48px 0; margin: 0; }  footer { background-color: #000; text-align: center; color: #999 }  .hero { justify-content: center; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='auto' style='background-color:%23000' viewBox='0 0 1280 1280'%3E%3Cdefs/%3E%3Cg clip-path='url(%23clip0)'%3E%3Cpath fill='%23010E18' d='M-668.3 895.3l622-622 622 622-622 622-622-622zM354 355l826-826 826 826-826 826-826-826z'/%3E%3Cpath fill='%23010E18' d='M722 242l48-48 48 48-48 48-48-48z'/%3E%3Cpath fill='%2304253E' d='M783 630l24-24 24 24-24 24-24-24zm284-190.2h4v-4h-4v4zm-72-55.5h4v-4h-4v4zm0 59.5h4v-4h-4v4zm0-31.8h4v-4h-4v4zm0 51.6h4v-4h-4v4zm36-39.6h4v-4h-4v4zm72 0h4v-4h-4v4zm36-23.9h4v-4h-4v4zm-72 99.2h4v-4h-4v4zm-36-15.9h4v-4h-4v4zm0 154.6h4v-3.9h-4v4zm72-154.6h4v-4h-4v4zm36 8h4v-4h-4v4zm-72-31.8h4v-4h-4v4zm-36-15.8h4v-4h-4v4zm72 0h4v-4h-4v4zm36-23.8h4v-4h-4v4zm-72 99.1h4v-4h-4v4zm-36 15.9h4v-4h-4v4zm0 138.8h4v-4h-4v4zm0 35.7h4v-4h-4v4zm0 55.5h4v-39.7h-4V765zm72-238h4v-4h-4v4zm0 51.6h4v-4h-4v4zm-36-99.1h4v-4h-4v4zm-36-15.9h4v-4h-4v4zm0 146.7h4v-4h-4v4zm72-146.7h4v-4h-4v4zm36-7.9h4v-4h-4v4zm-72 211.1h4V536h-4v130.8zm-36-92.2h4v-23.8h-4v23.8zm72 151.7h4V595.5h-4v130.8z'/%3E%3Cpath fill='%2304253E' fill-rule='evenodd' d='M1069 217l-74 74 74 74 74-74-74-74zm0 6l-68 68 68 68 68-68-68-68z' clip-rule='evenodd'/%3E%3Cpath fill='%2304253E' d='M184 613.8h4v-16h-4v16zM112 550h4v-4h-4v4zm36 63.8h4V578h-4v36zm72-31.9h4v-4h-4v4zm36-23.9h4v-4h-4v4zm-72 139.6h4v-4h-4v4zm-36 99.7h4v-4h-4v4zm72-155.6h4v-4h-4v4zm36 8h4v-4h-4v4zm-144 27.9h4v-37.9h-4v38zm36 16h4v-4h-4v4zm0 175.4h4v-3.9h-4v4zm0 56h4v-40h-4v40zm72-239.4h4v-4h-4v4zm-72 83.8h4v-12h-4v12zm108-155.6h4v-4h-4v4zM184 974h4V806.3h-4V974z'/%3E%3Cpath fill='%2304253E' d='M112 677.6h4v-30.9h-4v31zM220 886h4V754.4h-4V886zM118 478l68-68 68 68-68 68-68-68zm547 457h4v-12h-4v12zm56 16h4v-32h-4v32zm-28 99h4V930h-4v120zm-28-103h4v-4h-4v4zm56 24h4v-4h-4v4zm-28 96h4v-4h-4v4zm-28-100h4v-4h-4v4zm56 28h4v-4h-4v4zm-28 96h4v-4h-4v4zm28-80h4v-4h-4v4z'/%3E%3Cpath fill='%2304253E' fill-rule='evenodd' d='M659 867l36-36 36 36-36 36-36-36zm36-32l-32 32 32 32 32-32-32-32z' clip-rule='evenodd'/%3E%3Cpath fill='%23010E18' fill-rule='evenodd' d='M998 1077l40-40 40 40-40 40-40-40zm40-36l-36 36 36 36 36-36-36-36z' clip-rule='evenodd'/%3E%3Cpath fill='%23010E18' d='M371 415h4v-12h-4v12zm56 16h4v-32h-4v32zm-28 99h4V410h-4v120zm-28-103h4v-4h-4v4zm56 24h4v-4h-4v4zm-28 96h4v-4h-4v4zm-28-100h4v-4h-4v4zm56 28h4v-4h-4v4zm-28 96h4v-4h-4v4zm28-80h4v-4h-4v4z'/%3E%3Cpath fill='%23010E18' fill-rule='evenodd' d='M365 347l36-36 36 36-36 36-36-36zm36-32l-32 32 32 32 32-32-32-32z' clip-rule='evenodd'/%3E%3C/g%3E%3C/svg%3E")no-repeat center; background-size: cover; min-height: 100vh; padding: 96px 0 16px; margin: 0; }  /* .hero-small { justify-content: center; background: url("img/mainbg.svg")no-repeat center; background-size: cover; min-height: 50vh; padding: 80px 0 16px; margin: 0; } */  .flex-wrap { display: flex; flex-direction: row; flex-wrap: wrap; align-content: center; align-items: center; justify-content: space-around; width: 100%; max-width: 1280px; padding: 0 8px; margin: -16px -16px; } .wrap { display: flex; flex-direction: row; flex-wrap: wrap; align-content: center; align-items: center; justify-content: space-between; width: 100%; }  .box-100,.inner-100{width: calc(100% - 16px);} .box-75,.inner-75{width: calc(75% - 16px);} .box-60,.inner-60{width: calc(60% - 16px);} .box-50,.inner-50{width: calc(50% - 16px);} .box-40,.inner-40{width: calc(40% - 16px);} .box-30,.inner-30{width: calc(33.333% - 16px);} .box-25,.inner-25{width: calc(25% - 16px);} .box-100,.inner-100,.box-75,.inner-75,.box-60,.inner-60,.box-50,.inner-50,.box-40,.inner-40,.box-30,.inner-30,.box-25,.inner-25{align-self: stretch;margin: 16px 0;}  .elevated-card {background: #FFF;border-radius:4px;box-shadow: 0 16px 32px -16px rgba(0,0,0,0.24);margin-bottom: 16px;align-self: stretch;text-align: center;} .card-content {align-self: flex-start;width: 100%;padding: 16px; margin:0;} .text-head {margin-bottom:16px;}  .box-50 img { width: 100%; height: auto; object-fit: contain; }  a:link,a:visited {color: #222;text-decoration: none;} a.btn {display: inline-block;} a.btn-fw {display: block;}  a.btn,a.btn-fw,button { text-align: center; cursor: pointer; text-transform: uppercase; letter-spacing: .02em; height: 48px; font-weight: bolder; min-height: 48px; line-height: 48px; font-size: .8em; margin: 0; padding: 0 16px; min-width: 96px; overflow: hidden; text-decoration: none; white-space: nowrap; border-radius:4px; }  a.btn-primary:link,a.btn-primary:visited { background: #000; color: #FFF; }  a.btn-secondary:link,a.btn-secondary:visited { background: #FFF; color: #000; }  a.btn-outline:link,a.btn-outline:visited { background: #FFF; border:1px solid #000; color: #000; }  /* Helpers */  .left{text-align: left;} .left-c{text-align: left;} .center{text-align: center;} .more-space{padding: 0 24px;} .white{color: #FFF;} .max-wth-80{max-width:80%;} .darck{background:#EFEFEF;} .color-01-left{background: linear-gradient(90deg, #d7f3ff 0%, #d7f3ff 32%, #FFF 32%, #FFF 100%);} .color-01-right{background: linear-gradient(-90deg, #d7f3ff 0%, #d7f3ff 32%, #FFF 32%, #FFF 100%);} .elevated {border-radius:4px;background: #FFF;box-shadow: 0 16px 32px -16px rgba(0,0,0,0.24);} .elevated-content {padding:24px;border-radius:4px;background: #FFF;box-shadow: 0 16px 32px -16px rgba(0,0,0,0.24);} .grid{height:120px;background-color:#DDD;}.grid p{line-height:120px;margin:0;} .primary-head{text-transform:uppercase;color: #039;} .price{color:#039;font-size:2em;font-weight:700;margin-bottom:24px;line-height:48px;} .prod-body{padding-top:120px;}  /* Forms */  .form-control{width:100%;align-self:stretch;margin-bottom:24px;} .form-checkbox{width:100%;align-self:stretch;margin-bottom:24px;} .form-checkbox label{line-height:24px;font-style:italic;color:#777;} input[type="checkbox"] {padding:0;border:1px solid #dadada;width:16px;height:16px;border-radius:4px;cursor: pointer;margin: 0 8px 0 0;}  form{margin:0;padding:32px;} label{font-size:.96em;line-height:1;margin-bottom:16px;text-align:left;} input,textarea {font-size:1em;border:1px solid #dadada;border-radius:4px;color:#000;margin:8px 0 0 0;width:100%;outline:0;padding:16px 8px;-webkit-transition:border-color.2s;-o-transition:border-color.2s;transition:border-color.2s;vertical-align:middle;height:48px;} input:active,input:focus{color:#000;border:1px solid #06F;outline: 0;} input[type="color" i][list] {appearance: auto;width:80px;height: 48px;padding:0;border:none;background-color:#FFF;} input[type="value" i][list] {cursor:pointer;appearance: auto} button{background:#000;color:#FFF;display:block;width:100%;border:0;}  @media not screen and (max-width: 1024px) { a:hover {transition:all .3s;color: #039;}button:hover, a.btn-fw:hover, a.btn:hover {transition:all .3s;background:#039;color: #FFF;}.elevated-card:hover {box-shadow: 0 16px 32px -16px rgba(0,0,0,0.72);}}  @media(max-width: 1024px) { h1{font-size:3.6em;}.more-space{padding: 0;}}  @media(max-width: 960px) {  .logo { width: 100%; padding-left: 24px; text-align: center; }  .menu-open { background: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 19h16v-2H4v2zm0-6h16v-2H4v2zm0-8v2h16V5H4z' fill='%23000'/%3E%3C/svg%3E%0A")no-repeat center; display: block; cursor: pointer; width: 24px; height: 24px; }  .menu-close {display: none;}  #selected {background: none;}  #menu-toggle:checked ~ .menu-open { display: none; }  #menu-toggle:checked ~ .menu-close { background: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19 6.5L17.5 5 12 10.5 6.5 5 5 6.5l5.5 5.5L5 17.5 6.5 19l5.5-5.4 5.5 5.4 1.5-1.5-5.5-5.5L19 6.5z' fill='%23FFFFFF'/%3E%3C/svg%3E%0A")no-repeat center; display: block; cursor: pointer; width: 24px; height: 24px; }  .overlay { display: none; }  #menu-toggle:checked ~ .overlay { display: block; position: fixed; top: 0; left: 0; height: 100%; width: 100%; background-color: rgba(0, 0, 0, .72); z-index: -10000; }  nav { display: flex; flex-direction: column; justify-content: flex-start; position: fixed; top: 0; left: 0; width: 80%; max-width: 256px; height: 100%; padding-top: 16px; margin: 0; background: #FFF; -webkit-transform: translateX(-100%); transform: translateX(-100%); transition: 0.3s; }  nav a { font-size: .96em; line-height: 1.6; text-align: left; }  #menu-toggle:checked ~ nav { -webkit-transform: translateX(0); transform: translateX(0); list-style: none; }  .left-c{text-align:center;}.max-wth-80{max-width:100%;}.morespace{padding:0;} .color-01-right,.color-01-left{background: linear-gradient(180deg, #d7f3ff 0%, #d7f3ff 32%, #FFF 32%, #FFF 100%);} h1{font-size:3.2em;}.flex-wrap{width: 96%;}   .elevated-card, .box-100,.inner-100,.box-75,.inner-75,.box-60,.inner-60,.box-50,.inner-50,.box-40,.inner-40,.box-30,.inner-30,.box-25,.inner-25{width: calc(100% - 16px)} }  @media(max-width: 480px) {.flex-wrap{width: 96%;} body{font-size: 80%;}}</style>
+        <meta name="description" content="Hight performance PWA">
+        <link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+        <meta name="application-name" content="Mobikdev PWA">
+        <meta name="msapplication-TileColor" content="#000">
+        <meta name="theme-color" content="#000">
+        <link rel="shortcut icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+    </head>
+    <body>
+<header>
+    <div class="header-row">
+			<a class="logo" href="#">
+				<img width="24" height="24" src="data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='none'%3E%3Cpath fill='%23fff' d='M32 28.23A3.77 3.77 0 0128.23 32H3.77A3.77 3.77 0 010 28.23V3.77A3.77 3.77 0 013.77 0h24.46A3.77 3.77 0 0132 3.77v24.46z'/%3E%3Cmask id='a' width='32' height='32' x='0' y='0' maskUnits='userSpaceOnUse'%3E%3Cpath fill='%23fff' d='M32 28.23A3.77 3.77 0 0128.23 32H3.77A3.77 3.77 0 010 28.23V3.77A3.77 3.77 0 013.77 0h24.46A3.77 3.77 0 0132 3.77v24.46z'/%3E%3C/mask%3E%3Cg fill='%23039' mask='url(%23a)'%3E%3Cpath d='M24.92 12.72l-2.34 3.55a15.52 15.52 0 011.6 7.35c-.07 2.54-.13 4.5-2.76 8.16l-.16.22h4.61a19.4 19.4 0 00-.93-19.3l-.02.02zM6.28 25.87a3.8 3.8 0 004.15.84c.46-.2.88-.48 1.24-.84L22.44 9.54 6.28 20.43a3.85 3.85 0 000 5.44zM6.3 8.02c3.23-.58 6.55-.1 9.48 1.39l3.52-2.37A18.88 18.88 0 000 6.3v4.43a15.15 15.15 0 016.3-2.71z'/%3E%3C/g%3E%3C/svg%3E" alt="Logo">
+			</a>
+				<input id="menu-toggle" type="checkbox" style="display:none;width:0px;">
+				<label class="menu-open" for="menu-toggle"></label>
+				<label class="menu-close" for="menu-toggle"></label>
+				<label class="overlay" for="menu-toggle"></label>			
+				<nav>
+					<a href="simple.html" title="Simple page">Simple</a>
+					<a href="lead.html" title="Lead page">Lead</a>
+					<a href="gallery.html" title="Gallery page">Gallery</a>
+					<a href="article.html" title="Article page">Article</a>
+					<a href="forms.html" title="Forms page">Forms</a>
+					<a href="grid.html" id="selected" title="Grid page">Grid</a>
+					<a href="components.html" title="Components page">Components</a>
+				</nav>
+  </div>
+</header>
+        <section class="hero center">
+            <div class="flex-wrap white">
+								<h1>Mobikdev PWA</h1>
+								<span>—</span>
+                <h2>This is grid page</h2>
+            </div>
+        </section>
+        <main>
+            <div class="flex-wrap center">
+                <h3 class="inner-100">Grid</h3>
+								<div class="box-100 grid">								
+									<p>.box-100</p>
+								</div>
+								<div class="box-25 grid">								
+									<p>.box-25</p>
+								</div>
+								<div class="box-75 grid">								
+									<p>.box-75</p>
+								</div>
+								<div class="box-40 grid">								
+									<p>.box-40</p>
+								</div>
+								<div class="box-60 grid">								
+									<p>.box-60</p>
+								</div>
+								<div class="box-50 grid">								
+									<p>.box-50</p>
+								</div>
+								<div class="box-50 grid">								
+									<p>.box-50</p>
+								</div>
+								<div class="box-30 grid">								
+									<p>.box-30</p>
+								</div>
+								<div class="box-30 grid">								
+									<p>.box-30</p>
+								</div>
+								<div class="box-30 grid">								
+									<p>.box-30</p>
+								</div>
+								<div class="box-25 grid">								
+									<p>.box-25</p>
+								</div>
+								<div class="box-25 grid">								
+									<p>.box-25</p>
+								</div>
+								<div class="box-25 grid">								
+									<p>.box-25</p>
+								</div>
+								<div class="box-25 grid">								
+									<p>.box-25</p>
+								</div>
+            </div>
+        </main>
+        <footer><p class="inner-100"><small>© 2021 Rocketpage</small></p></footer>
+	<script>if ("serviceWorker" in navigator) {navigator.serviceWorker.register("sw.js", {updateViaCache: "none",});}</script>
+    </body>
+</html>
