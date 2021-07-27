@@ -1,1 +1,23 @@
-self.addEventListener("install",i=>{i.waitUntil(caches.open("v73").then(i=>i.addAll(["/","manifest.json","favicon-32x32.png","icon-144x144.png","img_1_1_400x400.webp","img_1_1_800x800.webp","img_6_1_1600x400.webp","img_1_15_400x600.webp","index.html","lead.html","gallery.html","article.html","forms.html","grid.html","components.html"]).then(function(){console.log("Success! App is available offline!")})))}),self.addEventListener("fetch",event=>{event.respondWith(event.preloadResponse);});
+// Promise.race is no good to us because it rejects if
+// a promise rejects before fulfilling. Let's make a proper
+// race function:
+function promiseAny(promises) {
+  return new Promise((resolve, reject) => {
+    // make sure promises are all promises
+    promises = promises.map(p => Promise.resolve(p));
+    // resolve this promise as soon as one resolves
+    promises.forEach(p => p.then(resolve));
+    // reject if all promises reject
+    promises.reduce((a, b) => a.catch(() => b))
+      .catch(() => reject(Error("All failed")));
+  });
+};
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    promiseAny([
+      caches.match(event.request),
+      fetch(event.request)
+    ])
+  );
+});
