@@ -1,8 +1,31 @@
-self.addEventListener("install", (event) => {
-  event.waitUntil(async function() {
-    const cache = await caches.open("v33");
-    await cache.addAll([
-      "/","manifest.json",
+var CACHE = "network-or-cache";
+
+// On install, cache some resource.
+self.addEventListener("install", function(evt) {
+  console.log("The service worker is being installed.");
+
+  // Ask the service worker to keep installing until the returning promise
+  // resolves.
+  evt.waitUntil(precache());
+});
+
+// On fetch, use cache but update the entry with the latest contents
+// from the server.
+self.addEventListener("fetch", function(evt) {
+  console.log("The service worker is serving the asset.");
+  // Try network and if it fails, go for the cached copy.
+  evt.respondWith(fromNetwork(evt.request, 400).catch(function () {
+    return fromCache(evt.request);
+  }));
+});
+
+// Open a cache and use `addAll()` with an array of assets to add all of them
+// to the cache. Return a promise resolving when all the assets are added.
+function precache() {
+  return caches.open(CACHE).then(function (cache) {
+    return cache.addAll([
+      "/",
+			"manifest.json",
 			"favicon-32x32.png",
 			"icon-144x144.png",
 			"img_1_1_400x400.webp",
@@ -14,31 +37,32 @@ self.addEventListener("install", (event) => {
 			"forms.html",
 			"grid.html",
 			"components.html"
-      // etc
     ]);
-  }());
-});
-
-// Promise.race is no good to us because it rejects if
-// a promise rejects before fulfilling. Let's make a proper
-// race function:
-function promiseAny(promises) {
-  return new Promise((resolve, reject) => {
-    // make sure promises are all promises
-    promises = promises.map(p => Promise.resolve(p));
-    // resolve this promise as soon as one resolves
-    promises.forEach(p => p.then(resolve));
-    // reject if all promises reject
-    promises.reduce((a, b) => a.catch(() => b))
-      .catch(() => reject(Error("All failed")));
   });
-};
+}
 
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    promiseAny([
-      caches.match(event.request),
-      fetch(event.request)
-    ])
-  );
-});
+// Time limited network request. If the network fails or the response is not
+// served before timeout, the promise is rejected.
+function fromNetwork(request, timeout) {
+  return new Promise(function (fulfill, reject) {
+    // Reject in case of timeout.
+    var timeoutId = setTimeout(reject, timeout);
+    // Fulfill in case of success.
+    fetch(request).then(function (response) {
+      clearTimeout(timeoutId);
+      fulfill(response);
+    // Reject also if network fetch rejects.
+    }, reject);
+  });
+}
+
+// Open the cache where the assets were stored and search for the requested
+// resource. Notice that in case of no matching, the promise still resolves
+// but it does with `undefined` as value.
+function fromCache(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return cache.match(request).then(function (matching) {
+      return matching || Promise.reject("no-match");
+    });
+  });
+}
