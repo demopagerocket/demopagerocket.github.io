@@ -1,1 +1,33 @@
-var CACHE="077";self.addEventListener("install",function(evt){console.log("The service worker is being installed");evt.waitUntil(precache());});self.addEventListener("fetch",function(evt){console.log("The service worker is serving the asset.");evt.respondWith(fromNetwork(evt.request,400).catch(function(){return fromCache(evt.request);}));});function precache(){return caches.open(CACHE).then(function(cache){return cache.addAll(["/","manifest.json","favicon-32x32.png","icon-144x144.png","img_1_1_400x400.webp","img_1_1_800x800.webp","img_6_1_1600x400.webp","img_1_15_400x600.webp","index.html","lead.html","gallery.html","article.html","forms.html","grid.html","components.html"]);});} function fromNetwork(request,timeout){return new Promise(function(fulfill,reject){var timeoutId=setTimeout(reject,timeout);fetch(request).then(function(response){clearTimeout(timeoutId);fulfill(response);},reject);});} function fromCache(request){return caches.open(CACHE).then(function(cache){return cache.match(request).then(function(matching){return matching||Promise.reject("no-match");});});}
+// Slow the serviceworker down a bit
+const start = Date.now();
+while (Date.now() - start < 200);
+
+addEventListener('install', event => {
+  event.waitUntil(async function() {
+    const cache = await caches.open('nav-preload-demo-v1');
+    await cache.add('/');
+  }());
+});
+
+addEventListener('activate', event => {
+  event.waitUntil(async function() {
+    if (self.registration.navigationPreload) {
+      await self.registration.navigationPreload.enable();
+    }
+  }());
+});
+
+addEventListener('fetch', event => {
+  event.respondWith(async function() {
+    // Respond from the cache if we can
+    const cachedResponse = await caches.match(event.request);
+    if (cachedResponse) return cachedResponse;
+
+    // Use the preloaded response, if it's there
+    const response = await event.preloadResponse;
+    if (response) return response;
+    
+    // Else try the network.
+    return fetch(event.request);
+  }());
+});
