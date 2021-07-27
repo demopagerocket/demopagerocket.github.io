@@ -42,6 +42,6 @@
                 <a class="btn btn-secondary" href="#">Primary button</a>
             </div>
         </section>
-	<script>if ("serviceWorker" in navigator) { window.addEventListener("load", function() { navigator.serviceWorker.register("sw.js"); }); }</script>
+	<script>if ("serviceWorker" in navigator) {navigator.serviceWorker.register("sw.js", {updateViaCache: "none",});}</script>
     </body>
 </html>
