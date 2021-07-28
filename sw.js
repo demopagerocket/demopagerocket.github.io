@@ -15,7 +15,7 @@ var URLS = [
 	'article.html',
 	'forms.html',
 	'grid.html',
-	'components.html'
+	'components.html'];
 // Respond with cached resources
 // This is called everytime the browser requests resources from the server
 self.addEventListener('fetch', function (e) {
