@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<title>Rocket - text page</title>
+	<link rel="manifest" href="manifest.json">
+	<meta name="description" content="Rocket pwa boilerplate">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#0066ff">
+	<meta name="application-name" content="Rocket pwa boilerplate">
+	<meta name="msapplication-TileColor" content="#0066ff">
+	<meta name="theme-color" content="#0066ff">
+	<link rel="shortcut icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+	<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="img/apple-touch-icon.png">
+	<style>
+	* {box-sizing:border-box;} html{height:100%;} body{margin:0;font-family:sans-serif;font-size:100%;height:100%;} header{background:#FFF;max-height:56px;box-shadow:0 16px 32px -16px rgba(0, 0, 0, 0.24);position:fixed;width:100%;}h1,h3,h4{align-items:center;line-height:1.8;margin-bottom:24px;text-transform:uppercase;font-weight:bold;}h1{text-align:center;font-size:2em;color:#FFF;} h2{font-size:1.6em;} h3{font-size:1.3em;} h4{font-size:1.1em;} p{font-size:1em;line-height:1.6;margin-bottom:16px;}
+.fh{min-height:100vh;} 
+a.btn-light:link, a.btn-light:visited{background:#FFF;color:#06F;}.hero{background-color:#000;color:#FFF;text-align:center;}section,footer{ display:flex; flex-direction:column; flex-wrap:nowrap; justify-content:space-around; align-content:center; align-items:center; padding:48px 0; margin:0;} .height-56{min-height:56vh;} .primary{color:#06F;} .white{color:#FFF;} .left{text-align:left;} .center{text-align:center;} .right{text-align:right;} .bg-grey{background:#fafafa;} .bg-main{background:#06F;} .bg-dark{background-color:#000;} .bold{font-weight:bold;} .space-16{padding:16px 0;} .header-container{margin:0 auto;padding:0 16px;max-width:1280px;} .header-row{ display:flex; flex-wrap:nowrap; justify-content:space-between; align-items:stretch; padding:16px 0; margin:0;} .logo{padding:0;} .menu{text-align:right;margin:0;padding:0;} .resp-nav a{ color:#222; padding:16px 0; margin-left:24px; font-size:.8em; font-weight:600; text-transform:uppercase; text-align:center; text-decoration:none; background-image:linear-gradient(90deg, #06F 0%, #06F 100%); background-position:0% 100%; background-repeat:no-repeat; background-size:0% 2px; transition:background-size .3s;} #selected{color:#06F;background-size:100% 2px;background-image:linear-gradient(90deg, #06F 0%, #06F 100%);} .menu-open,.menu-close, #menu-toggle{display:none;width:0px;} .hero{ background:#000 url("img/hero-bg.svg")no-repeat; background-size:cover; padding:16px; margin:0px; height:320px} .flex-wrap{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around; align-content:center; align-items:center; width:100%; max-width:1280px; padding:0 8px; margin:-16px -16px;} .flex-wrap-grid{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:flex-start; align-content:center; align-items:center; width:100%; max-width:1280px; padding:0 8px; margin:-16px -16px;} .flex-wrap-elevated{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around; width:calc(100% - 16px); padding:16px 32px 40px; margin:24px 0 40px 0; background:#FFF; box-shadow:0 16px 32px -16px rgba(0,0,0,0.24);} .box-1,.box-2,.box-3,.box-4{padding:32px 16px;margin:8px;align-self:stretch;} .box-1,.inner-1{width:calc(100% - 16px);} .box-2,.inner-2{width:calc(50% - 16px);} .box-3,.inner-3{width:calc(33.333% - 16px);} .box-4,.inner-4{width:calc(25% - 16px);} .inner-1,.inner-2,.inner-3,.inner-4{align-self:stretch;} .box-elevated{background:#FFF;box-shadow:0 16px 32px -16px rgba(0, 0, 0, 0.24);margin:24px 0;} .footer-wrap{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around; align-content:center; align-items:center; width:100%; max-width:1280px; padding:0 8px; margin:-16px -16px;} .footer-content a,.footer-content p{color:#FFF;font-size:.8em;line-height:1.6;text-decoration:none;} .footer-content a{display:inline-block;text-align:left;margin:0 16px 0 0;} .footer-content p{text-align:right;margin:0;} .footer-right{width:calc(36% - 16px);padding:0;margin:8px;} .footer-left{width:calc(64% - 16px);padding:0;margin:8px;} .footer-divider{display:none;} .table-row{ border-top:1px dashed #EEE; display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around; align-content:center; align-items:center; width:100%;} .table-row span{ display:block; color:#222; margin:8px 0; vertical-align:middle; padding:8px 0; font-size:1.0em;} .table-left-col{flex:75%;max-width:75%;text-align:left;} .table-right-col{flex:25%;max-width:25%;text-align:right;} a.btn{display:inline-block;} a.btn-fw{display:block;} a.btn,a.btn-fw{ text-align:center; cursor:pointer; text-transform:uppercase; letter-spacing:.02em; height:48px; font-weight:bolder; min-height:48px; line-height:48px; font-size:.8em; margin:0; padding:0 16px; min-width:96px; overflow:hidden; text-decoration:none; white-space:nowrap;} a.btn-primary:link,a.btn-primary:visited{background:#06F;color:#FFF;} a.btn-secondary:link,a.btn-secondary:visited{background:#FFF;border:2px solid #06F;color:#06F;} .list{display:flex;flex-direction:row;margin-bottom:16px;text-align:left;} .li-img{ flex:1 1 auto; background:url("img/check-icon-24px.svg")no-repeat center; min-width:24px; width:24px; height:24px; margin-top:4px;} .li-text{flex:5 2 auto;}.li-text p{margin:0;padding-left:16px;} .card img{width:100%;height:auto;vertical-align:middle} .card-title{display:block;} .card-title::after{ content:""; margin:24px auto; display:block; background:#06F; width:32px; height:2px;} .card-content,.card-bottom{align-self:flex-start;width:100%;padding:16px 16px 0 16px;} .card-content h3,.card-content h4,.card-content p,.card-content svg{margin:0 0 8px;} .contact-links{ display:flex; flex-direction:column; min-height:200px; align-items:center; justify-content:space-around;} .contact-links a,.contact-links p{ font-size:.96em; font-weight:600; color:#06F; text-decoration:none; line-height:1; margin:0;} #grid-toggle:checked ~ .grid > .item{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-content:center; align-items:center; padding-bottom:24px; width:calc(25% - 16px); margin:8px 8px 16px; align-self:stretch; background:#FFF; box-shadow:0 16px 32px -16px rgba(0, 0, 0, 0.24);} #grid-toggle:checked ~ .grid > .item picture{width:100%;height:auto;overflow:hidden;} .grid > .item picture{width:96px;height:96px;overflow:hidden;align-self:stretch;background:#06F;} .grid > .item img{width:100%;height:auto;} #grid-toggle:checked ~ .grid > .item .card-content,#grid-toggle:checked ~ .grid > .item .card-price, .grid > .item .card-bottom{ width:100%; overflow:hidden; text-align:center;} .grid > .item .card-content{ display:flex; flex-direction:row; flex-wrap:wrap; width:calc(100% - 96px); padding:16px 16px 0 16px; align-self:stretch;} .grid > .item .card-content .c-title{width:70%;order:1;text-align:left;} .grid > .item .card-content .c-price{width:30%;order:2;text-align:right;} .grid > .item .card-content .c-text{width:100%;order:3;text-align:left;} #grid-toggle:checked ~ .grid > .item .card-content .c-title{width:100%;order:1;text-align:center;} #grid-toggle:checked ~ .grid > .item .card-content .c-price{width:100%;order:3;text-align:center;} #grid-toggle:checked ~ .grid > .item .card-content .c-text{width:100%;order:2;text-align:center;} .grid > .item .card-title::after{display:none;} .grid > .item{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-content:center; align-items:center; width:100%; border-bottom:1px solid #EEE; margin:0; align-self:stretch; background:#FFF; padding:16px;} .divider{ display:block; width:calc(100% - 16px); height:2px; text-align:center; margin:16px 0; border-bottom:1px solid #CCC;} .selector-wrap{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around; align-content:center; align-items:center; width:100%; max-width:1280px; padding:0 8px; margin:0 -16px 24px -16px;} .selector-wrap h2{margin:0;} .inner-left{width:calc(80% - 16px);} .inner-right{width:calc(20% - 16px);} .grid{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around; align-content:center; align-items:center; width:100%; max-width:1280px; padding:0 8px; margin:-16px -16px;} #grid-toggle:checked ~ .list-view, .grid-view{ display:flex; flex-direction:row; flex-wrap:wrap; cursor:pointer; width:24px; height:24px; align-self:flex-end; text-align:right; margin:0 0 0 auto;} #grid-toggle:checked ~ .selector-wrap > .inner-right > .grid-view{ background:url("img/list-icon-24px.svg")no-repeat center;} .grid-view{background:url("img/grid-icon-24px.svg")no-repeat center;} .grid > .item{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-content:center; align-items:center; padding:0 0 24px 0; width:calc(25% - 16px); margin:0 8px 16px; align-self:stretch; background:#FFF; box-shadow:0 16px 32px -16px rgba(0, 0, 0, 0.24);} #grid-toggle:checked ~ .grid > .item{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-content:center; align-items:center; width:calc(100% - 16px); border-bottom:1px solid #EEE; margin:0; align-self:stretch; background:#FFF; padding:8px;} .grid > .item picture{width:100%;height:auto;overflow:hidden;} #grid-toggle:checked ~ .grid > .item picture{ width:96px; height:96px; overflow:hidden; align-self:stretch; background:#06F;} .grid > .item img{width:100%;height:auto;} .grid > .item .card-content{ display:flex; flex-direction:row; flex-wrap:wrap; width:100%; overflow:hidden; text-align:center;} #grid-toggle:checked ~ .grid > .item .card-content,#grid-toggle:checked ~ .grid > .item .card-price, .grid > .item .card-bottom{ display:flex; flex-direction:row; flex-wrap:wrap; width:calc(100% - 96px); padding:16px 16px 0 16px; align-self:stretch;} .grid > .item .card-content .c-title{width:100%;order:1;text-align:center;} .grid > .item .card-content .c-price{width:100%;order:3;text-align:center;} .grid > .item .card-content .c-text{width:100%;order:2;text-align:center;} #grid-toggle:checked ~ .grid > .item .card-content .c-title{width:70%;order:1;text-align:left;} #grid-toggle:checked ~ .grid > .item .card-content .c-price{width:30%;order:2;text-align:right;} #grid-toggle:checked ~ .grid > .item .card-content .c-text{width:100%;order:3;text-align:left;} .grid > .item .card-title::after{display:none;} .tab-wrapper{ width:calc(100% - 16px); display:flex; flex-wrap:wrap; overflow-x:auto; align-items:flex-start; justify-content:flex-start; background:#FFF; margin:24px 0 40px 0; box-shadow:0 16px 32px -16px rgba(0, 0, 0, 0.24);} .tab-wrapper .tab-item,.tab-wrapper input{display:none;} .tab-wrapper .tab-item{ width:100%; padding:16px 32px 40px; order:1; min-height:240px;} .tab-wrapper label{ flex-direction:row; border-bottom:1px solid #EEE; background-color:#FFF; height:48px; line-height:48px; padding:0; font-size:.8em; font-weight:600; text-transform:uppercase; text-align:center; align-items:center; justify-content:center; flex-grow:1; cursor:pointer;} .tab-wrapper input:checked + label{background:#FFF;color:#06F;border-bottom:2px solid #06F;} .tab-wrapper input:checked + label + .tab-item{display:block;} @media not screen and (max-width:800px){ .contact-links a:hover{opacity:.64;} a.btn-primary:hover,a.btn-primary:active,a.btn-secondary:hover,a.btn-secondary:active{ box-shadow:1px 2px 8px 1px rgba(0, 0, 0, 0.24)} .grid-view:hover, #grid-toggle:checked ~ .selector-wrap > .inner-right > .grid-view:hover{opacity:0.4;transition:all .3s;} a:hover{transition:all .3s}.resp-nav a:hover{background-size:100% 2px;color:#06F;}} @media (max-width:1024px){ body{font-size:90%;}a.btn{font-size:.88em;}.hero{padding:48px 0 16px 0;margin:0px;height:240px;} .footer-left,.footer-right{ width:100%; text-align:center; padding:0; margin:0 8px;} .footer-divider{ display:block; width:100%; height:2px; text-align:center; margin:24px 0; border-bottom:1px solid rgba(255, 255, 255, 0.08);} .footer-content{flex-direction:column;} .footer-content a,.footer-content p{ font-size:.96em; display:block; text-align:center; margin:16px 0 8px 0;} .card-4{ width:calc(33.333% - 16px); margin:8px; align-self:stretch;}  #grid-toggle:checked ~ .grid > .item{width:calc(50% - 16px);}  .grid-view:hover,#grid-toggle:checked ~ .selector-wrap > .inner-right > .grid-view:hover{opacity:100;}}  @media (max-width:768px){ body{font-size:88%;}p{font-size:1.2em;}.logo{width:100%;padding-left:24px;text-align:center;} .menu-open{ background:url("img/menu-open-icon-24px.svg")no-repeat center; display:block; cursor:pointer; width:24px; height:24px;} .menu-close{display:none;} #selected{background:none;} #menu-toggle:checked ~ .menu-open{display:none;} #menu-toggle:checked ~ .menu-close{ background:url("img/menu-close-icon-24px.svg")no-repeat center; display:block; cursor:pointer; width:24px; height:24px;} .overlay{display:none;} #menu-toggle:checked ~ .overlay{ display:block; position:fixed; top:0; left:0; height:100%; width:100%; background-color:rgba(0, 0, 0, .72); z-index:-10000;} .resp-nav{ display:flex; flex-direction:column; justify-content:flex-start; position:fixed; top:0; left:0; width:80%; max-width:256px; height:100%; padding-top:16px; margin:0; background:#FFF; -webkit-transform:translateX(-100%); transform:translateX(-100%); transition:0.3s;} .resp-nav a{font-size:.96em;line-height:1.6;text-align:left;} #menu-toggle:checked ~ .resp-nav{ -webkit-transform:translateX(0); transform:translateX(0); list-style:none;} .flex-wrap-grid,.flex-wrap{width:96%;} .footer-wrap{flex-direction:column;flex-wrap:nowrap;} .flex-wrap-elevated{padding:16px 16px 40px;} .hero{padding:48px 0 16px 0;margin:0px;height:240px;} .box-1,.inner-1,.box-2,.inner-2,.box-3,.inner-3{width:calc(100% - 16px);} .card-4,.box-4,.inner-4{width:calc(50% - 16px);} .list{ flex-direction:column; text-align:center; align-items:center; } .li-img{ flex:1 1 auto; background:url("img/check-icon-24px.svg")no-repeat center; min-width:24px; width:24px; height:24px; margin-top:4px; } .li-text{flex:100%;margin:8px 0 16px;}.li-text p{padding:0;} .card-content h4,.card-content p{font-size:96%;} .grid > .item{width:calc(50% - 16px);} #grid-toggle:checked ~ .grid > .item{width:calc(100% - 16px);} #grid-toggle:checked ~ .grid > .item .card-content .c-text{font-size:80%;} }  @media (max-width:480px){body{font-size:80%;}a.btn{font-size:.96em;}.hero{background:#06F;}.card-4,.box-4,.inner-4{width:calc(100% - 16px);}.grid{width:96%;}} @media (max-width:375px){.grid > .item{width:calc(100% - 16px);}#grid-toggle:checked ~ .grid > .item .card-content .c-text{display:none;}}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="header-container">
+    <div class="header-row">
+			<a class="logo" href="index.html">
+				<img width="24" height="24" src="data:image/svg+xml;base64,PHN2ZyAgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAw%0D%0AMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCI+CiAgPHBhdGggZmlsbD0iIzA2%0D%0ARiIgZD0iTTEzIDloLTJ2Mkg5djJoMnYyaDJ2LTJoMnYtMmgtMlY5ek0yMCAyNGg0di00aC0ydjJo%0D%0ALTJ2MnpNNCAwSDB2NGgyVjJoMlYwek00IDI0SDB2LTRoMnYyaDJ2MnpNMjAgMGg0djRoLTJWMmgt%0D%0AMlYweiIvPgo8L3N2Zz4K" alt="Back to home page">
+			</a>
+      <div class="menu">
+				<input id="menu-toggle" type="checkbox" style="display:none;width:0px;">
+				<label class="menu-open" for="menu-toggle"></label>
+				<label class="menu-close" for="menu-toggle"></label>
+				<label class="overlay" for="menu-toggle"></label>			
+				<div class="resp-nav">
+					<a href="index.html" id="selected" title="Simple page">Simple</a>
+					<a href="prices.html" title="Data table">Table</a>
+					<a href="infotext.html" title="Text block">Text</a>
+					<a href="tabs.html" title="Tabs and accordions">Tabs</a>
+					<a href="cardsgrid.html" title="Cards showcase">Cards</a>	
+					<a href="contacts.html" title="Contact info">Contacts</a>
+					<a href="downloads.html" title="downloads page">Downloads</a>
+				</div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- End Header -->	
+<!-- Section hero -->
+<section class="hero">
+	<div class="flex-wrap">	
+		<h1 class="inner-1">Pwa ready boilerplate</h1>
+		<h2 class="inner-1">Simple page</h2>
+	</div>			
+</section>
+<!-- End Section hero -->	
+<!-- Section 3 col -->
+<section>
+	<div class="flex-wrap center">
+		<h2 class="inner-1">H2 title section heading</h2>
+		<div class="box-3 card">
+			<div class="card-content">
+				<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64"><path fill="#0066ff" d="M9 64h46v-2H9v2zm46 0c5 0 9-4 9-9h-2a7 7 0 01-7 7v2zm9-9V9h-2v46h2zm0-46c0-5-4-9-9-9v2a7 7 0 017 7h2zm-9-9H9v2h46V0zM9 0C4 0 0 4 0 9h2a7 7 0 017-7V0zM0 9v46h2V9H0zm0 46c0 5 4 9 9 9v-2a7 7 0 01-7-7H0zM8 38.8V27.2h2.2v11.6H8zM21.7 38.8v-7.6l-3 5.7h-1.1l-3-5.7v7.6h-2V27.2h2.3l3.3 6.6 3.3-6.6h2.3v11.6h-2.1zM29.4 27.2h1.9l4.2 11.6h-2.2l-1-2.9h-4l-1 3h-2.2l4.3-11.7zm2.5 7.2l-1.6-4.6-1.6 4.6H32zM41.6 32.4h4.2v6l-1.8.4-2.2.2c-1.7 0-3-.5-3.9-1.6-1-1-1.4-2.5-1.4-4.4 0-1.2.3-2.3.7-3.2a5 5 0 012-2c.9-.6 2-.8 3.2-.8a7.9 7.9 0 013.3.7l-.6 1.7a8 8 0 00-1.3-.4c-.5-.2-1-.2-1.4-.2-.8 0-1.5.1-2 .5-.6.3-1 .8-1.3 1.5-.3.6-.5 1.4-.5 2.2 0 .8.1 1.6.4 2.2a3 3 0 001 1.5c.6.4 1.2.5 2 .5a6.6 6.6 0 001.8-.2v-2.8h-2.2v-1.8zM56 36.9v2h-7.8V27.1H56v2h-5.5V32h4.7v1.8h-4.7v3H56z"/></svg>
+				<h3>Card title</h3>
+				<p>This is the description text for the card</p>
+			</div>			
+			<div class="card-bottom">
+				<a class="btn btn-primary" href="prices.html" target="_blank">Primary button</a>
+			</div>
+		</div>	
+		<div class="box-3 card">
+			<div class="card-content">
+				<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64"><path fill="#0066ff" d="M9 64h46v-2H9v2zm46 0c5 0 9-4 9-9h-2a7 7 0 01-7 7v2zm9-9V9h-2v46h2zm0-46c0-5-4-9-9-9v2a7 7 0 017 7h2zm-9-9H9v2h46V0zM9 0C4 0 0 4 0 9h2a7 7 0 017-7V0zM0 9v46h2V9H0zm0 46c0 5 4 9 9 9v-2a7 7 0 01-7-7H0zM8 38.8V27.2h2.2v11.6H8zM21.7 38.8v-7.6l-3 5.7h-1.1l-3-5.7v7.6h-2V27.2h2.3l3.3 6.6 3.3-6.6h2.3v11.6h-2.1zM29.4 27.2h1.9l4.2 11.6h-2.2l-1-2.9h-4l-1 3h-2.2l4.3-11.7zm2.5 7.2l-1.6-4.6-1.6 4.6H32zM41.6 32.4h4.2v6l-1.8.4-2.2.2c-1.7 0-3-.5-3.9-1.6-1-1-1.4-2.5-1.4-4.4 0-1.2.3-2.3.7-3.2a5 5 0 012-2c.9-.6 2-.8 3.2-.8a7.9 7.9 0 013.3.7l-.6 1.7a8 8 0 00-1.3-.4c-.5-.2-1-.2-1.4-.2-.8 0-1.5.1-2 .5-.6.3-1 .8-1.3 1.5-.3.6-.5 1.4-.5 2.2 0 .8.1 1.6.4 2.2a3 3 0 001 1.5c.6.4 1.2.5 2 .5a6.6 6.6 0 001.8-.2v-2.8h-2.2v-1.8zM56 36.9v2h-7.8V27.1H56v2h-5.5V32h4.7v1.8h-4.7v3H56z"/></svg>
+				<h3>Card title</h3>
+				<p>This is the description text for the card</p>
+			</div>			
+			<div class="card-bottom">
+				<a class="btn btn-primary" href="prices.html" target="_blank">Primary button</a>
+			</div>
+		</div>	
+		<div class="box-3 card">
+			<div class="card-content">
+				<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64"><path fill="#0066ff" d="M9 64h46v-2H9v2zm46 0c5 0 9-4 9-9h-2a7 7 0 01-7 7v2zm9-9V9h-2v46h2zm0-46c0-5-4-9-9-9v2a7 7 0 017 7h2zm-9-9H9v2h46V0zM9 0C4 0 0 4 0 9h2a7 7 0 017-7V0zM0 9v46h2V9H0zm0 46c0 5 4 9 9 9v-2a7 7 0 01-7-7H0zM8 38.8V27.2h2.2v11.6H8zM21.7 38.8v-7.6l-3 5.7h-1.1l-3-5.7v7.6h-2V27.2h2.3l3.3 6.6 3.3-6.6h2.3v11.6h-2.1zM29.4 27.2h1.9l4.2 11.6h-2.2l-1-2.9h-4l-1 3h-2.2l4.3-11.7zm2.5 7.2l-1.6-4.6-1.6 4.6H32zM41.6 32.4h4.2v6l-1.8.4-2.2.2c-1.7 0-3-.5-3.9-1.6-1-1-1.4-2.5-1.4-4.4 0-1.2.3-2.3.7-3.2a5 5 0 012-2c.9-.6 2-.8 3.2-.8a7.9 7.9 0 013.3.7l-.6 1.7a8 8 0 00-1.3-.4c-.5-.2-1-.2-1.4-.2-.8 0-1.5.1-2 .5-.6.3-1 .8-1.3 1.5-.3.6-.5 1.4-.5 2.2 0 .8.1 1.6.4 2.2a3 3 0 001 1.5c.6.4 1.2.5 2 .5a6.6 6.6 0 001.8-.2v-2.8h-2.2v-1.8zM56 36.9v2h-7.8V27.1H56v2h-5.5V32h4.7v1.8h-4.7v3H56z"/></svg>
+				<h3>Card title</h3>
+				<p>This is the description text for the card</p>
+			</div>			
+			<div class="card-bottom">
+				<a class="btn btn-primary" href="prices.html" target="_blank">Primary button</a>
+			</div>
+		</div>			
+	</div>		
+</section>
+<!-- Section 3 col -->
+<section class="bg-main">
+	<div class="flex-wrap center">
+		<h2 class="inner-1 white">H2 title section heading</h2>
+		<div class="box-3 box-elevated card">
+			<div class="card-content">
+				<h3 class="card-title">Card heading</h3>
+				<p>This is the plain text used in this layout, in paragraphs, in lists</p>
+				<h4 class="bold">Bold 800</h4>
+			</div>			
+			<div class="card-bottom">
+				<a class="btn btn-secondary" href="prices.html" target="_blank">Secondary button</a>
+			</div>
+		</div>		
+		<div class="box-3 box-elevated card">
+			<div class="card-content">
+				<h3 class="card-title">Card heading</h3>
+				<p>This is the plain text used in this layout, in paragraphs, in lists</p>
+				<h4 class="bold">Bold 800</h4>
+			</div>			
+			<div class="card-bottom">
+				<a class="btn btn-secondary" href="prices.html" target="_blank">Secondary button</a>
+			</div>
+		</div>			
+		<div class="box-3 box-elevated card">
+			<div class="card-content">
+				<h3 class="card-title">Card heading</h3>
+				<p>This is the plain text used in this layout, in paragraphs, in lists</p>
+				<h4 class="bold">Bold 800</h4>
+			</div>			
+			<div class="card-bottom">
+				<a class="btn btn-secondary" href="prices.html" target="_blank">Secondary button</a>
+			</div>
+		</div>			
+	</div>
+</section>	
+<!-- Section 1 col -->
+<section>
+	<div class="flex-wrap center ">
+		<h2 class="inner-1">H2 title section head</h2>
+		<div class="inner-1">
+			<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64">
+				<path fill="#06F" d="M17.8 44.3l.8.6-.8-.6zm-1.3 2l-.8-.5-1 1.5h1.8v-1zm6.1 0l1-.4-.3-.6h-.7v1zm1.5 3.5l.9-.4-1 .4zM25 52l-1 .4.8 1.7 1-1.6-.8-.5zm1.3-2l-.8-.6.8.6zm11.4 0l.8-.6-.8.6zm1.3 2l-.8.5 1 1.6.7-1.7-.9-.4zm1-2.2l-1-.4 1 .4zm1.4-3.5v-1h-.7l-.2.6.9.4zm6.1 0v1h1.9l-1-1.5-.9.5zm-1.3-2l-.9.6.9-.6zM31.2 32l-.7.7.7.8.7-.8-.7-.7zM9 64h46v-2H9v2zm46 0c5 0 9-4 9-9h-2a7 7 0 01-7 7v2zm9-9V9h-2v46h2zm0-46c0-5-4-9-9-9v2a7 7 0 017 7h2zm-9-9H9v2h46V0zM9 0C4 0 0 4 0 9h2a7 7 0 017-7V0zM0 9v46h2V9H0zm0 46c0 5 4 9 9 9v-2a7 7 0 01-7-7H0zm17-11.2l-1.3 2 1.6 1 1.3-2-1.6-1zm-.5 3.5h6.1v-2h-6.1v2zm5.2-.6l1.4 3.5 1.9-.8-1.5-3.5-1.8.8zm1.4 3.5l1 2.2 1.8-.8-1-2.2-1.8.8zm2.7 2.3l1.3-2-1.6-1-1.3 2 1.6 1zm11-2l1.4 2 1.7-1-1.4-2-1.6 1zm3.1 1.9l1-2.2-1.9-.8-1 2.2 2 .8zm1-2.2l1.4-3.5-1.8-.8-1.5 3.5 1.9.8zm.5-2.9h6.1v-2h-6.1v2zm7-1.5l-1.4-2-1.6 1 1.3 2 1.6-1zM17 28a15 15 0 0115-15v-2a17 17 0 00-17 17h2zm15-15a15 15 0 0115 15h2a17 17 0 00-17-17v2zm11.8 27.3A17 17 0 0049 28h-2c0 4.3-1.8 8-4.6 10.8l1.4 1.5zM15 28c0 4.8 2 9.2 5.2 12.3l1.4-1.5A15 15 0 0117 28h-2zm5.2 12.3a17 17 0 0010 4.6l.2-2a15 15 0 01-8.8-4l-1.4 1.4zm10 4.6l1.8.1v-2h-1.6l-.2 1.9zm1.8.1l1.8-.1-.2-2-1.6.1v2zm1.8-.1a17 17 0 0010-4.6l-1.4-1.5a15 15 0 01-8.8 4.1l.2 2zm-1-.5l1.7-1v-.1l-1.7 1.1zm0 0l4 6.1 1.7-1-4-6.1-1.6 1zm-5.7 6.1l4-6-1.6-1.1-4 6 1.6 1.1zm4-6v-.1l-1.6-1.1 1.6 1.2zm-11-5.5L17 43.8l1.7 1 3-4.7-1.6-1.1zm27 4.8L43.8 39l-1.7 1 3.1 4.9 1.7-1.1zM38.5 22l-8.2 9.3 1.5 1.4 8.2-9.4-1.5-1.3zM32 31.3l-4.1-4.2-1.4 1.4 4 4.2 1.5-1.4z"/>
+			</svg>
+			<p>This is the plain text used in this layout, in paragraphs, in lists. This is the plain text used in this layout, in paragraphs, in lists. This is the plain text used in this layout, in paragraphs, in lists. This is the plain text used in this layout, in paragraphs, in lists. This is the plain text used in this layout, in paragraphs, in lists.</p>
+		</div>			
+	</div>		
+</section>
+<footer class="bg-dark">
+	<div class="footer-wrap footer-content">
+		<div class="footer-left">
+			<a href="https://mobikdev.com/" title="back to mobikdev folio"><i>back to</i> → <b>mobikdev.com</b></a>
+		</div>
+		<div class="footer-divider"></div>		
+		<div class="footer-right">
+			<p>© 2021 mobikdev. All rights reserved</p>
+		</div>
+	</div>
+</footer>
+<script> if ('serviceWorker' in navigator) {navigator.serviceWorker.register('sw.js', {updateViaCache: 'none',});}</script>
+</body>
+</html>

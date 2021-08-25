@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<title>Rocket - text page</title>
+	<link rel="manifest" href="manifest.json">
+	<meta name="description" content="Rocket pwa boilerplate">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#0066ff">
+	<meta name="application-name" content="Rocket pwa boilerplate">
+	<meta name="msapplication-TileColor" content="#0066ff">
+	<meta name="theme-color" content="#0066ff">
+	<link rel="shortcut icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+	<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="img/apple-touch-icon.png">
+	<style>
+	* {box-sizing:border-box;} html{height:100%;} body{margin:0;font-family:sans-serif;font-size:100%;height:100%;} header{background:#FFF;max-height:56px;box-shadow:0 16px 32px -16px rgba(0, 0, 0, 0.24);position:fixed;width:100%;}h1,h3,h4{align-items:center;line-height:1.8;margin-bottom:24px;text-transform:uppercase;font-weight:bold;}h1{text-align:center;font-size:2em;color:#FFF;} h2{font-size:1.6em;} h3{font-size:1.3em;} h4{font-size:1.1em;} p{font-size:1em;line-height:1.6;margin-bottom:16px;}
+.fh{min-height:100vh;} 
+a.btn-light:link, a.btn-light:visited{background:#FFF;color:#06F;}.hero{background-color:#000;color:#FFF;text-align:center;}section,footer{ display:flex; flex-direction:column; flex-wrap:nowrap; justify-content:space-around; align-content:center; align-items:center; padding:48px 0; margin:0;} .height-56{min-height:56vh;} .primary{color:#06F;} .white{color:#FFF;} .left{text-align:left;} .center{text-align:center;} .right{text-align:right;} .bg-grey{background:#fafafa;} .bg-main{background:#06F;} .bg-dark{background-color:#000;} .bold{font-weight:bold;} .space-16{padding:16px 0;} .header-container{margin:0 auto;padding:0 16px;max-width:1280px;} .header-row{ display:flex; flex-wrap:nowrap; justify-content:space-between; align-items:stretch; padding:16px 0; margin:0;} .logo{padding:0;} .menu{text-align:right;margin:0;padding:0;} .resp-nav a{ color:#222; padding:16px 0; margin-left:24px; font-size:.8em; font-weight:600; text-transform:uppercase; text-align:center; text-decoration:none; background-image:linear-gradient(90deg, #06F 0%, #06F 100%); background-position:0% 100%; background-repeat:no-repeat; background-size:0% 2px; transition:background-size .3s;} #selected{color:#06F;background-size:100% 2px;background-image:linear-gradient(90deg, #06F 0%, #06F 100%);} .menu-open,.menu-close, #menu-toggle{display:none;width:0px;} .hero{ background:#000 url("img/hero-bg.svg")no-repeat; background-size:cover; padding:16px; margin:0px; height:320px} .flex-wrap{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around; align-content:center; align-items:center; width:100%; max-width:1280px; padding:0 8px; margin:-16px -16px;} .flex-wrap-grid{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:flex-start; align-content:center; align-items:center; width:100%; max-width:1280px; padding:0 8px; margin:-16px -16px;} .flex-wrap-elevated{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around; width:calc(100% - 16px); padding:16px 32px 40px; margin:24px 0 40px 0; background:#FFF; box-shadow:0 16px 32px -16px rgba(0,0,0,0.24);} .box-1,.box-2,.box-3,.box-4{padding:32px 16px;margin:8px;align-self:stretch;} .box-1,.inner-1{width:calc(100% - 16px);} .box-2,.inner-2{width:calc(50% - 16px);} .box-3,.inner-3{width:calc(33.333% - 16px);} .box-4,.inner-4{width:calc(25% - 16px);} .inner-1,.inner-2,.inner-3,.inner-4{align-self:stretch;} .box-elevated{background:#FFF;box-shadow:0 16px 32px -16px rgba(0, 0, 0, 0.24);margin:24px 0;} .footer-wrap{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around; align-content:center; align-items:center; width:100%; max-width:1280px; padding:0 8px; margin:-16px -16px;} .footer-content a,.footer-content p{color:#FFF;font-size:.8em;line-height:1.6;text-decoration:none;} .footer-content a{display:inline-block;text-align:left;margin:0 16px 0 0;} .footer-content p{text-align:right;margin:0;} .footer-right{width:calc(36% - 16px);padding:0;margin:8px;} .footer-left{width:calc(64% - 16px);padding:0;margin:8px;} .footer-divider{display:none;} .table-row{ border-top:1px dashed #EEE; display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around; align-content:center; align-items:center; width:100%;} .table-row span{ display:block; color:#222; margin:8px 0; vertical-align:middle; padding:8px 0; font-size:1.0em;} .table-left-col{flex:75%;max-width:75%;text-align:left;} .table-right-col{flex:25%;max-width:25%;text-align:right;} a.btn{display:inline-block;} a.btn-fw{display:block;} a.btn,a.btn-fw{ text-align:center; cursor:pointer; text-transform:uppercase; letter-spacing:.02em; height:48px; font-weight:bolder; min-height:48px; line-height:48px; font-size:.8em; margin:0; padding:0 16px; min-width:96px; overflow:hidden; text-decoration:none; white-space:nowrap;} a.btn-primary:link,a.btn-primary:visited{background:#06F;color:#FFF;} a.btn-secondary:link,a.btn-secondary:visited{background:#FFF;border:2px solid #06F;color:#06F;} .list{display:flex;flex-direction:row;margin-bottom:16px;text-align:left;} .li-img{ flex:1 1 auto; background:url("img/check-icon-24px.svg")no-repeat center; min-width:24px; width:24px; height:24px; margin-top:4px;} .li-text{flex:5 2 auto;}.li-text p{margin:0;padding-left:16px;} .card img{width:100%;height:auto;vertical-align:middle} .card-title{display:block;} .card-title::after{ content:""; margin:24px auto; display:block; background:#06F; width:32px; height:2px;} .card-content,.card-bottom{align-self:flex-start;width:100%;padding:16px 16px 0 16px;} .card-content h3,.card-content h4,.card-content p,.card-content svg{margin:0 0 8px;} .contact-links{ display:flex; flex-direction:column; min-height:200px; align-items:center; justify-content:space-around;} .contact-links a,.contact-links p{ font-size:.96em; font-weight:600; color:#06F; text-decoration:none; line-height:1; margin:0;} #grid-toggle:checked ~ .grid > .item{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-content:center; align-items:center; padding-bottom:24px; width:calc(25% - 16px); margin:8px 8px 16px; align-self:stretch; background:#FFF; box-shadow:0 16px 32px -16px rgba(0, 0, 0, 0.24);} #grid-toggle:checked ~ .grid > .item picture{width:100%;height:auto;overflow:hidden;} .grid > .item picture{width:96px;height:96px;overflow:hidden;align-self:stretch;background:#06F;} .grid > .item img{width:100%;height:auto;} #grid-toggle:checked ~ .grid > .item .card-content,#grid-toggle:checked ~ .grid > .item .card-price, .grid > .item .card-bottom{ width:100%; overflow:hidden; text-align:center;} .grid > .item .card-content{ display:flex; flex-direction:row; flex-wrap:wrap; width:calc(100% - 96px); padding:16px 16px 0 16px; align-self:stretch;} .grid > .item .card-content .c-title{width:70%;order:1;text-align:left;} .grid > .item .card-content .c-price{width:30%;order:2;text-align:right;} .grid > .item .card-content .c-text{width:100%;order:3;text-align:left;} #grid-toggle:checked ~ .grid > .item .card-content .c-title{width:100%;order:1;text-align:center;} #grid-toggle:checked ~ .grid > .item .card-content .c-price{width:100%;order:3;text-align:center;} #grid-toggle:checked ~ .grid > .item .card-content .c-text{width:100%;order:2;text-align:center;} .grid > .item .card-title::after{display:none;} .grid > .item{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-content:center; align-items:center; width:100%; border-bottom:1px solid #EEE; margin:0; align-self:stretch; background:#FFF; padding:16px;} .divider{ display:block; width:calc(100% - 16px); height:2px; text-align:center; margin:16px 0; border-bottom:1px solid #CCC;} .selector-wrap{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around; align-content:center; align-items:center; width:100%; max-width:1280px; padding:0 8px; margin:0 -16px 24px -16px;} .selector-wrap h2{margin:0;} .inner-left{width:calc(80% - 16px);} .inner-right{width:calc(20% - 16px);} .grid{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around; align-content:center; align-items:center; width:100%; max-width:1280px; padding:0 8px; margin:-16px -16px;} #grid-toggle:checked ~ .list-view, .grid-view{ display:flex; flex-direction:row; flex-wrap:wrap; cursor:pointer; width:24px; height:24px; align-self:flex-end; text-align:right; margin:0 0 0 auto;} #grid-toggle:checked ~ .selector-wrap > .inner-right > .grid-view{ background:url("img/list-icon-24px.svg")no-repeat center;} .grid-view{background:url("img/grid-icon-24px.svg")no-repeat center;} .grid > .item{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-content:center; align-items:center; padding:0 0 24px 0; width:calc(25% - 16px); margin:0 8px 16px; align-self:stretch; background:#FFF; box-shadow:0 16px 32px -16px rgba(0, 0, 0, 0.24);} #grid-toggle:checked ~ .grid > .item{ display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-content:center; align-items:center; width:calc(100% - 16px); border-bottom:1px solid #EEE; margin:0; align-self:stretch; background:#FFF; padding:8px;} .grid > .item picture{width:100%;height:auto;overflow:hidden;} #grid-toggle:checked ~ .grid > .item picture{ width:96px; height:96px; overflow:hidden; align-self:stretch; background:#06F;} .grid > .item img{width:100%;height:auto;} .grid > .item .card-content{ display:flex; flex-direction:row; flex-wrap:wrap; width:100%; overflow:hidden; text-align:center;} #grid-toggle:checked ~ .grid > .item .card-content,#grid-toggle:checked ~ .grid > .item .card-price, .grid > .item .card-bottom{ display:flex; flex-direction:row; flex-wrap:wrap; width:calc(100% - 96px); padding:16px 16px 0 16px; align-self:stretch;} .grid > .item .card-content .c-title{width:100%;order:1;text-align:center;} .grid > .item .card-content .c-price{width:100%;order:3;text-align:center;} .grid > .item .card-content .c-text{width:100%;order:2;text-align:center;} #grid-toggle:checked ~ .grid > .item .card-content .c-title{width:70%;order:1;text-align:left;} #grid-toggle:checked ~ .grid > .item .card-content .c-price{width:30%;order:2;text-align:right;} #grid-toggle:checked ~ .grid > .item .card-content .c-text{width:100%;order:3;text-align:left;} .grid > .item .card-title::after{display:none;} .tab-wrapper{ width:calc(100% - 16px); display:flex; flex-wrap:wrap; overflow-x:auto; align-items:flex-start; justify-content:flex-start; background:#FFF; margin:24px 0 40px 0; box-shadow:0 16px 32px -16px rgba(0, 0, 0, 0.24);} .tab-wrapper .tab-item,.tab-wrapper input{display:none;} .tab-wrapper .tab-item{ width:100%; padding:16px 32px 40px; order:1; min-height:240px;} .tab-wrapper label{ flex-direction:row; border-bottom:1px solid #EEE; background-color:#FFF; height:48px; line-height:48px; padding:0; font-size:.8em; font-weight:600; text-transform:uppercase; text-align:center; align-items:center; justify-content:center; flex-grow:1; cursor:pointer;} .tab-wrapper input:checked + label{background:#FFF;color:#06F;border-bottom:2px solid #06F;} .tab-wrapper input:checked + label + .tab-item{display:block;} @media not screen and (max-width:800px){ .contact-links a:hover{opacity:.64;} a.btn-primary:hover,a.btn-primary:active,a.btn-secondary:hover,a.btn-secondary:active{ box-shadow:1px 2px 8px 1px rgba(0, 0, 0, 0.24)} .grid-view:hover, #grid-toggle:checked ~ .selector-wrap > .inner-right > .grid-view:hover{opacity:0.4;transition:all .3s;} a:hover{transition:all .3s}.resp-nav a:hover{background-size:100% 2px;color:#06F;}} @media (max-width:1024px){ body{font-size:90%;}a.btn{font-size:.88em;}.hero{padding:48px 0 16px 0;margin:0px;height:240px;} .footer-left,.footer-right{ width:100%; text-align:center; padding:0; margin:0 8px;} .footer-divider{ display:block; width:100%; height:2px; text-align:center; margin:24px 0; border-bottom:1px solid rgba(255, 255, 255, 0.08);} .footer-content{flex-direction:column;} .footer-content a,.footer-content p{ font-size:.96em; display:block; text-align:center; margin:16px 0 8px 0;} .card-4{ width:calc(33.333% - 16px); margin:8px; align-self:stretch;}  #grid-toggle:checked ~ .grid > .item{width:calc(50% - 16px);}  .grid-view:hover,#grid-toggle:checked ~ .selector-wrap > .inner-right > .grid-view:hover{opacity:100;}}  @media (max-width:768px){ body{font-size:88%;}p{font-size:1.2em;}.logo{width:100%;padding-left:24px;text-align:center;} .menu-open{ background:url("img/menu-open-icon-24px.svg")no-repeat center; display:block; cursor:pointer; width:24px; height:24px;} .menu-close{display:none;} #selected{background:none;} #menu-toggle:checked ~ .menu-open{display:none;} #menu-toggle:checked ~ .menu-close{ background:url("img/menu-close-icon-24px.svg")no-repeat center; display:block; cursor:pointer; width:24px; height:24px;} .overlay{display:none;} #menu-toggle:checked ~ .overlay{ display:block; position:fixed; top:0; left:0; height:100%; width:100%; background-color:rgba(0, 0, 0, .72); z-index:-10000;} .resp-nav{ display:flex; flex-direction:column; justify-content:flex-start; position:fixed; top:0; left:0; width:80%; max-width:256px; height:100%; padding-top:16px; margin:0; background:#FFF; -webkit-transform:translateX(-100%); transform:translateX(-100%); transition:0.3s;} .resp-nav a{font-size:.96em;line-height:1.6;text-align:left;} #menu-toggle:checked ~ .resp-nav{ -webkit-transform:translateX(0); transform:translateX(0); list-style:none;} .flex-wrap-grid,.flex-wrap{width:96%;} .footer-wrap{flex-direction:column;flex-wrap:nowrap;} .flex-wrap-elevated{padding:16px 16px 40px;} .hero{padding:48px 0 16px 0;margin:0px;height:240px;} .box-1,.inner-1,.box-2,.inner-2,.box-3,.inner-3{width:calc(100% - 16px);} .card-4,.box-4,.inner-4{width:calc(50% - 16px);} .list{ flex-direction:column; text-align:center; align-items:center; } .li-img{ flex:1 1 auto; background:url("img/check-icon-24px.svg")no-repeat center; min-width:24px; width:24px; height:24px; margin-top:4px; } .li-text{flex:100%;margin:8px 0 16px;}.li-text p{padding:0;} .card-content h4,.card-content p{font-size:96%;} .grid > .item{width:calc(50% - 16px);} #grid-toggle:checked ~ .grid > .item{width:calc(100% - 16px);} #grid-toggle:checked ~ .grid > .item .card-content .c-text{font-size:80%;} }  @media (max-width:480px){body{font-size:80%;}a.btn{font-size:.96em;}.hero{background:#06F;}.card-4,.box-4,.inner-4{width:calc(100% - 16px);}.grid{width:96%;}} @media (max-width:375px){.grid > .item{width:calc(100% - 16px);}#grid-toggle:checked ~ .grid > .item .card-content .c-text{display:none;}}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="header-container">
+    <div class="header-row">
+			<a class="logo" href="index.html">
+				<img width="24" height="24" src="data:image/svg+xml;base64,PHN2ZyAgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAw%0D%0AMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCI+CiAgPHBhdGggZmlsbD0iIzA2%0D%0ARiIgZD0iTTEzIDloLTJ2Mkg5djJoMnYyaDJ2LTJoMnYtMmgtMlY5ek0yMCAyNGg0di00aC0ydjJo%0D%0ALTJ2MnpNNCAwSDB2NGgyVjJoMlYwek00IDI0SDB2LTRoMnYyaDJ2MnpNMjAgMGg0djRoLTJWMmgt%0D%0AMlYweiIvPgo8L3N2Zz4K" alt="Back to home page">
+			</a>
+      <div class="menu">
+			<input id="menu-toggle" type="checkbox" style="display:none;width:0px;">
+			<label class="menu-open" for="menu-toggle"></label>
+			<label class="menu-close" for="menu-toggle"></label>
+			<label class="overlay" for="menu-toggle"></label>			
+			<div class="resp-nav">
+				<a href="index.html" title="Simple page">Simple</a>
+				<a href="prices.html" title="Data table">Table</a>
+				<a href="infotext.html" title="Text block">Text</a>
+				<a href="tabs.html" title="Tabs and accordions">Tabs</a>
+				<a href="cardsgrid.html" id="selected" title="Cards showcase">Cards</a>	
+				<a href="contacts.html" title="Contact info">Contacts</a>
+				<a href="downloads.html" title="downloads page">Downloads</a>
+			</div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Section hero -->
+<section class="hero">
+	<div class="flex-wrap center">	
+		<h1 class="inner-1">Pwa ready boilerplate</h1>
+		<h2 class="inner-1">Cards</h2>
+	</div>			
+</section>
+<!-- Section 1 col -->
+<section class="bg-grey">	
+	<input id="grid-toggle" type="checkbox" style="display:none;width:0px;">
+	<div class="selector-wrap">	
+		<div class="inner-left">
+			<h2>Grid / List view</h2>
+		</div>
+		<div class="inner-right">
+			<label class="grid-view" for="grid-toggle"></label>
+			<label class="list-view" for="grid-toggle"></label>			
+		</div>
+		<div class="divider"></div>
+	</div>				
+	<div class="grid">					
+<!-- Start line 01 -->	
+		<div class="item">
+			<picture>
+				<img src="img/picture_1x1.svg" alt="Product picture">
+			</picture>	
+			<div class="card-content">
+				<h4 class="c-title">Card heading</h4>
+				<h4 class="c-price bold primary">$888.88</h4>
+				<p class="c-text">This is the plain text used in this layout, in paragraphs, in lists</p>
+			</div>			
+		</div>		
+		<div class="item">
+			<picture>
+				<img src="img/picture_1x1.svg" alt="Product picture">
+			</picture>	
+			<div class="card-content">
+				<h4 class="c-title">Card heading</h4>
+				<h4 class="c-price bold primary">$888.88</h4>
+				<p class="c-text">This is the plain text used in this layout, in paragraphs, in lists</p>
+			</div>			
+		</div>		
+		<div class="item">
+			<picture>
+				<img src="img/picture_1x1.svg" alt="Product picture">
+			</picture>	
+			<div class="card-content">
+				<h4 class="c-title">Card heading</h4>
+				<h4 class="c-price bold primary">$888.88</h4>
+				<p class="c-text">This is the plain text used in this layout, in paragraphs, in lists</p>
+			</div>			
+		</div>		
+		<div class="item">
+			<picture>
+				<img src="img/picture_1x1.svg" alt="Product picture">
+			</picture>	
+			<div class="card-content">
+				<h4 class="c-title">Card heading</h4>
+				<h4 class="c-price bold primary">$888.88</h4>
+				<p class="c-text">This is the plain text used in this layout, in paragraphs, in lists</p>
+			</div>			
+		</div>				
+<!-- End line 01 -->		
+<!-- Start line 01 -->	
+		<div class="item">
+			<picture>
+				<img src="img/picture_1x1.svg" alt="Product picture">
+			</picture>	
+			<div class="card-content">
+				<h4 class="c-title">Card heading</h4>
+				<h4 class="c-price bold primary">$888.88</h4>
+				<p class="c-text">This is the plain text used in this layout, in paragraphs, in lists</p>
+			</div>			
+		</div>		
+		<div class="item">
+			<picture>
+				<img src="img/picture_1x1.svg" alt="Product picture">
+			</picture>	
+			<div class="card-content">
+				<h4 class="c-title">Card heading</h4>
+				<h4 class="c-price bold primary">$888.88</h4>
+				<p class="c-text">This is the plain text used in this layout, in paragraphs, in lists</p>
+			</div>			
+		</div>		
+		<div class="item">
+			<picture>
+				<img src="img/picture_1x1.svg" alt="Product picture">
+			</picture>	
+			<div class="card-content">
+				<h4 class="c-title">Card heading</h4>
+				<h4 class="c-price bold primary">$888.88</h4>
+				<p class="c-text">This is the plain text used in this layout, in paragraphs, in lists</p>
+			</div>			
+		</div>		
+		<div class="item">
+			<picture>
+				<img src="img/picture_1x1.svg" alt="Product picture">
+			</picture>	
+			<div class="card-content">
+				<h4 class="c-title">Card heading</h4>
+				<h4 class="c-price bold primary">$888.88</h4>
+				<p class="c-text">This is the plain text used in this layout, in paragraphs, in lists</p>
+			</div>			
+		</div>					
+<!-- End line 01 -->			
+	</div>
+</section>	
+<!-- Footer -->
+<footer class="bg-dark">
+	<div class="footer-wrap footer-content">
+		<div class="footer-left">
+			<a href="https://mobikdesign.com.ua/" title="back to mobikdesign folio"><i>back to</i> → <b>mobikdesign.com.ua</b></a>
+		</div>
+		<div class="footer-divider"></div>		
+		<div class="footer-right">
+			<p>© 2020 Mobikdesign. All rights reserved</p>
+		</div>
+	</div>
+</footer>
+<script> if ('serviceWorker' in navigator) {navigator.serviceWorker.register('sw.js', {updateViaCache: 'none',});}</script>
+</body>
+</html>
