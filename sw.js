@@ -1,1 +1,24 @@
-const cacheName = 'dv_01'; const precacheResources = ['/', 'index.html', 'prices.html', 'infotext.html', 'tabs.html', 'cardsgrid.html', 'contacts.html', 'downloads.html', 'img/menu-open-icon-24px.svg', 'img/menu-close-icon-24px.svg', 'img/list-icon-24px.svg', 'img/grid-icon-24px.svg', 'img/check-icon-24px.svg','img/favicon-32x32.png', 'img/apple-touch-icon.png', 'img/icon-72x72.png', 'img/icon-96x96.png', 'img/icon-128x128.png', 'img/icon-144x144.png', 'img/icon-152x152.png', 'img/icon-192x192.png', 'img/icon-384x384.png', 'img/icon-512x512.png', 'img/maskable_icon.png', 'img/picture_1x1.svg', 'img/hero-bg.svg', 'manifest.json']; self.addEventListener('install', (event) => { console.log('Service worker install event!'); event.waitUntil(caches.open(cacheName).then((cache) => cache.addAll(precacheResources))); }); self.addEventListener('activate', (event) => { console.log('Service worker activate event!'); }); self.addEventListener('fetch', (event) => { console.log('Fetch intercepted for:', event.request.url); event.respondWith( caches.match(event.request).then((cachedResponse) => { if (cachedResponse) { return cachedResponse; } return fetch(event.request); }), ); });
+addEventListener('install', event => {
+  event.waitUntil(async function() {
+    const cache = await caches.open('v1');
+    await cache.add('/', 'index.html', 'prices.html', 'infotext.html', 'tabs.html', 'cardsgrid.html', 'contacts.html', 'downloads.html', 'img/favicon-32x32.png', 'img/apple-touch-icon.png', 'img/icon-72x72.png', 'img/icon-96x96.png', 'img/icon-128x128.png', 'img/icon-144x144.png', 'img/icon-152x152.png', 'img/icon-192x192.png', 'img/icon-384x384.png', 'img/icon-512x512.png', 'img/maskable_icon.png', 'manifest.json');
+  }());
+});
+
+addEventListener('activate', event => {
+  event.waitUntil(async function() {
+    if (self.registration.navigationPreload) {
+      await self.registration.navigationPreload.enable();
+    }
+  }());
+});
+
+addEventListener('fetch', event => {
+  event.respondWith(async function() {
+    const cachedResponse = await caches.match(event.request);
+    if (cachedResponse) return cachedResponse;
+    const response = await event.preloadResponse;
+    if (response) return response;
+    return fetch(event.request);
+  }());
+});
