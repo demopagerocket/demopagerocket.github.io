@@ -146,6 +146,6 @@
 		</div>
 	</div>
 </footer>
-<script> if ('serviceWorker' in navigator) {navigator.serviceWorker.register('sw.js', {updateViaCache: 'none',});}</script>
+	<script>if ("serviceWorker" in navigator) { window.addEventListener("load", async () => { try { const reg = await navigator.serviceWorker.register("sw.js"); console.log("Service worker registered!", reg); } catch (err) { console.log("Service worker registration failed: ", err); } }); }</script>
 </body>
 </html>
