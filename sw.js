@@ -1,7 +1,7 @@
 addEventListener('install', event => {
   event.waitUntil(async function() {
     const cache = await caches.open('v1');
-    await cache.add('index.html', 'prices.html', 'infotext.html', 'tabs.html', 'cardsgrid.html', 'contacts.html', 'downloads.html');
+    await cache.add('/');
   }());
 });
 
